@@ -6,6 +6,9 @@ import org.example.ex3_service_etudiant.DTO.ResponseEtudiantDto;
 import org.example.ex3_service_etudiant.Entity.Etudiant;
 import org.example.ex3_service_etudiant.Mappers.EtudiantMapper;
 import org.example.ex3_service_etudiant.Repository.EtudiantRepository;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.http.HttpEntity;
@@ -82,4 +85,6 @@ public class EtudiantServiceImpl implements EtudiantService {
         String url = "http://localhost:8083/v1/Filiere/" + filiereId;
         return restTemplate.getForObject(url, FiliereResponseDTO.class);
     }
+
+
 }

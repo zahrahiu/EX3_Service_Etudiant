@@ -17,6 +17,7 @@ public class EtudiantMapper {
     public ResponseEtudiantDto ENTITY_TO_DTO(Etudiant etudiant){
         ResponseEtudiantDto dto = new ResponseEtudiantDto();
         BeanUtils.copyProperties(etudiant, dto);
+        dto.setIdEtudiant(etudiant.getId());
         return dto;
     }
 }

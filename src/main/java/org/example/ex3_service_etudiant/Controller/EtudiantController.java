@@ -56,7 +56,7 @@ public class EtudiantController {
                     @ApiResponse(responseCode = "500", description = "Erreur interne du serveur")
             }
     )
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('SCOPE_ADMIN')")
 
     @PostMapping
     public ResponseEntity<ResponseEtudiantDto> addEtudiant(@RequestBody RequestEtudiantDto dto) {
@@ -76,7 +76,7 @@ public class EtudiantController {
             }
     )
 
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAnyAuthority('SCOPE_ADMIN','SCOPE_USER')")
 
     @GetMapping
     public ResponseEntity<List<ResponseEtudiantDto>> getAllEtudiants() {
@@ -93,7 +93,7 @@ public class EtudiantController {
                     @ApiResponse(responseCode = "404", description = "Étudiant non trouvé")
             }
     )
-    @PreAuthorize("hasAnyAuthority('ADMIN','USER')")
+    @PreAuthorize("hasAnyAuthority('SCOPE_ADMIN','SCOPE_USER')")
 
     @GetMapping("/{id}")
     public ResponseEntity<ResponseEtudiantDto> getEtudiantById(@PathVariable Long id) {
@@ -116,7 +116,7 @@ public class EtudiantController {
             }
     )
 
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('SCOPE_ADMIN')")
 
     @PutMapping("/{id}")
     public ResponseEntity<ResponseEtudiantDto> updateEtudiant(@PathVariable Long id, @RequestBody RequestEtudiantDto dto) {
@@ -131,7 +131,7 @@ public class EtudiantController {
                     @ApiResponse(responseCode = "404", description = "Étudiant non trouvé")
             }
     )
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('SCOPE_ADMIN')")
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteEtudiant(@PathVariable Long id) {
