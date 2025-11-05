@@ -8,7 +8,10 @@ import org.example.ex3_service_etudiant.Mappers.EtudiantMapper;
 import org.example.ex3_service_etudiant.Repository.EtudiantRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -75,9 +78,8 @@ public class EtudiantServiceImpl implements EtudiantService {
         etudiantRepository.deleteById(id);
     }
 
-    // 🔗 Méthode qui communique avec le service Filiere
     private FiliereResponseDTO getFiliereById(Long filiereId) {
-        String url = "http://localhost:8083/v1/Filiere/" + filiereId; // 🔥 غيّري الـport إلى ديال service Filière عندك
+        String url = "http://localhost:8083/v1/Filiere/" + filiereId;
         return restTemplate.getForObject(url, FiliereResponseDTO.class);
     }
 }
